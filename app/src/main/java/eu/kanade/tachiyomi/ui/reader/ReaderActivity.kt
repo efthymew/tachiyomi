@@ -67,6 +67,7 @@ import eu.kanade.tachiyomi.ui.reader.setting.ReaderSettingsSheet
 import eu.kanade.tachiyomi.ui.reader.setting.ReadingModeType
 import eu.kanade.tachiyomi.ui.reader.viewer.BaseViewer
 import eu.kanade.tachiyomi.ui.reader.viewer.ReaderProgressIndicator
+import eu.kanade.tachiyomi.ui.reader.viewer.pager.PagerViewer
 import eu.kanade.tachiyomi.ui.reader.viewer.pager.R2LPagerViewer
 import eu.kanade.tachiyomi.util.storage.getUriCompat
 import eu.kanade.tachiyomi.util.system.applySystemAnimatorScale
@@ -493,6 +494,20 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
             }
         }
 
+        // Translate
+        with(binding.actionTranslate) {
+            setTooltip(R.string.action_translate)
+
+            setOnClickListener {
+                if (viewer is PagerViewer) {
+                    ReaderTranslateSheet(
+                        this@ReaderActivity,
+                        (viewer as PagerViewer).getCurrentPage()
+                    ).translate()
+                }
+            }
+        }
+
         // Settings sheet
         with(binding.actionSettings) {
             setTooltip(R.string.action_settings)
@@ -846,6 +861,14 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
      */
     fun saveImage(page: ReaderPage) {
         presenter.saveImage(page)
+    }
+
+    /**
+     * Called from the page sheet. It delegates saving the image of the given [page] on external
+     * storage to the presenter.
+     */
+    fun translatePage(page: ReaderPage): String? {
+        return presenter.translatePage(page)
     }
 
     /**

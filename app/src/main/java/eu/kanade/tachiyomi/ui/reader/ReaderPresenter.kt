@@ -561,6 +561,38 @@ class ReaderPresenter(
     }
 
     /**
+     * Translates page
+     */
+    fun translatePage(page: ReaderPage): String? {
+//        Observable
+//            .fromCallable {
+//                if (manga.isLocal()) {
+//                    val context = Injekt.get<Application>()
+//                    LocalSource.updateCover(context, manga, stream())
+//                    manga.updateCoverLastModified(db)
+//                    R.string.cover_updated
+//                    TranslateResult.Success
+//                } else {
+//                    if (manga.favorite) {
+//                        coverCache.setCustomCoverToCache(manga, stream())
+//                        manga.updateCoverLastModified(db)
+//                        coverCache.clearMemoryCache()
+//                        SetAsCoverResult.Success
+//                    } else {
+//                        SetAsCoverResult.AddToLibraryFirst
+//                    }
+//                }
+//            }
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribeFirst(
+//                { view, result -> view.onSetAsCoverResult(result) },
+//                { view, _ -> view.onSetAsCoverResult(SetAsCoverResult.Error) }
+//            )
+        return page.imageUrl
+    }
+
+    /**
      * Saves the image of this [page] in the given [directory] and returns the file location.
      */
     private fun saveImage(page: ReaderPage, directory: File, manga: Manga): File {
@@ -685,6 +717,13 @@ class ReaderPresenter(
      */
     enum class SetAsCoverResult {
         Success, AddToLibraryFirst, Error
+    }
+
+    /**
+     * Results of the Translate feature.
+     */
+    enum class TranslateResult {
+        Success, Error
     }
 
     /**

@@ -405,4 +405,8 @@ abstract class PagerViewer(val activity: ReaderActivity) : BaseViewer {
     private fun cleanupPageSplit() {
         adapter.cleanupPageSplit()
     }
+
+    public fun getCurrentPage(): ReaderPage? {
+        return currentPage as? ReaderPage
+    }
 }
