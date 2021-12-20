@@ -23,6 +23,5 @@ class ReaderTranslateSheet(
         val currPage = page ?: return
         val translation = activity.translatePage(currPage) ?: null
         binding.translation.setText("translation changed here!")
-        show()
     }
 }

@@ -500,10 +500,12 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
 
             setOnClickListener {
                 if (viewer is PagerViewer) {
-                    ReaderTranslateSheet(
+                    val readerTranslateSheet = ReaderTranslateSheet(
                         this@ReaderActivity,
                         (viewer as PagerViewer).getCurrentPage()
-                    ).translate()
+                    )
+                    readerTranslateSheet.show()
+                    readerTranslateSheet.translate()
                 }
             }
         }
