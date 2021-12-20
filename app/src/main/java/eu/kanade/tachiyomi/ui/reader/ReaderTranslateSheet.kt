@@ -1,10 +1,13 @@
 package eu.kanade.tachiyomi.ui.reader
 
+import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import eu.kanade.tachiyomi.databinding.ReaderTranslateSheetBinding
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
 import eu.kanade.tachiyomi.widget.sheet.BaseBottomSheetDialog
+import com.googlecode.tesseract.android.TessBaseAPI
+
 
 class ReaderTranslateSheet(
     private val activity: ReaderActivity,
@@ -12,7 +15,8 @@ class ReaderTranslateSheet(
 ) : BaseBottomSheetDialog(activity) {
 
     private lateinit var binding: ReaderTranslateSheetBinding
-    private val apiKey: String = "d05a440ff188957"
+    private val DATA_PATH = Environment.getExternalStorageDirectory().toString() + "/Tachiyomi/"
+    private val TESSDATA = "tessdata"
 
     override fun createView(inflater: LayoutInflater): View {
         binding = ReaderTranslateSheetBinding.inflate(activity.layoutInflater, null, false)
@@ -21,7 +25,7 @@ class ReaderTranslateSheet(
 
     fun translate() {
         val currPage = page ?: return
-        val translation = activity.translatePage(currPage) ?: null
-        binding.translation.setText("translation changed here!")
+        val url = currPage.imageUrl
+        val tessBaseApi = TessBaseAPI()
     }
 }

@@ -866,14 +866,6 @@ class ReaderActivity : BaseRxActivity<ReaderActivityBinding, ReaderPresenter>() 
     }
 
     /**
-     * Called from the page sheet. It delegates saving the image of the given [page] on external
-     * storage to the presenter.
-     */
-    fun translatePage(page: ReaderPage): String? {
-        return presenter.translatePage(page)
-    }
-
-    /**
      * Called from the presenter when a page is saved or fails. It shows a message or logs the
      * event depending on the [result].
      */

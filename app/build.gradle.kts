@@ -146,6 +146,10 @@ dependencies {
     // Source models and interfaces from Tachiyomi 1.x
     implementation("org.tachiyomi:source-api:1.1")
 
+    // libraries for translator
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("com.rmtheis:tess-two:9.1.0")
+
     // AndroidX libraries
     implementation("androidx.annotation:annotation:1.4.0-alpha01")
     implementation("androidx.appcompat:appcompat:1.4.0")
