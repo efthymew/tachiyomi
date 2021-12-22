@@ -148,6 +148,7 @@ dependencies {
 
     // libraries for translator
     implementation("com.google.mlkit:text-recognition-japanese:16.0.0-beta2")
+    implementation("com.google.mlkit:translate:16.1.2")
 
     // AndroidX libraries
     implementation("androidx.annotation:annotation:1.4.0-alpha01")
