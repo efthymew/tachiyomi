@@ -1,4 +1,4 @@
-package eu.kanade.tachiyomi.ui.reader
+package eu.kanade.tachiyomi.ui.reader.translate
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -12,12 +12,13 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.japanese.JapaneseTextRecognizerOptions
 import eu.kanade.tachiyomi.databinding.ReaderTranslateSheetBinding
+import eu.kanade.tachiyomi.ui.reader.ReaderActivity
 import eu.kanade.tachiyomi.ui.reader.model.ReaderPage
 import eu.kanade.tachiyomi.widget.sheet.BaseBottomSheetDialog
 
 class ReaderTranslateSheet(
-    private val activity: ReaderActivity,
-    private val page: ReaderPage?
+        private val activity: ReaderActivity,
+        private val page: ReaderPage?
 ) : BaseBottomSheetDialog(activity) {
 
     private lateinit var binding: ReaderTranslateSheetBinding
